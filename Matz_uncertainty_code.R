@@ -28,9 +28,6 @@ library(MASS)
 # 1. observational: total_baseline
 # 2. preindustrial: get_pi_pr_mod
 # 3. historical: get_hist_pr_mod
-load("z.pi.new")
-load("z.hist.new") 
-load("z.obs.new")
 #preindustrial = get_pi_pr_mod
 #historical = get_hist_pr_mod
 #Z.observed = total_baseline
@@ -40,6 +37,15 @@ load("z.obs.new")
 #Z.preindustrial = c(get_pi_pr_mod[,,model])
 #Z.historical = Z.historical[!is.na(Z.historical)]
 #Z.preindustrial = Z.preindustrial[!is.na(Z.preindustrial)]
+
+load("z.giss.hist.new")
+load("z.hadgem.hist.new")
+load("z.noresm.hist.new")
+load("z.giss.pi.new")
+load("z.hadgem.pi.new")
+load("z.noresm.pi.new")
+load("z.obs.new")
+
 Z.historical = c(hgt.giss.hist,hgt.hadgem.hist,hgt.noresm.hist)
 Z.preindustrial = c(hgt.giss.pi,hgt.hadgem.pi,hgt.noresm.pi)
 
