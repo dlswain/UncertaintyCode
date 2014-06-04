@@ -25,16 +25,19 @@ library(MASS)
 # 1. observational: total_baseline
 # 2. preindustrial: get_pi_pr_mod
 # 3. historical: get_hist_pr_mod
-load("DeeptisData.RData") 
-preindustrial = get_pi_pr_mod
-historical = get_hist_pr_mod
-Z.observed = total_baseline
+load("z.pi")
+load("z.hist") 
+#preindustrial = get_pi_pr_mod
+#historical = get_hist_pr_mod
+#Z.observed = total_baseline
 #Select a model
-model = 1
-Z.historical = c(get_hist_pr_mod[,,model])
-Z.preindustrial = c(get_pi_pr_mod[,,model])
-Z.historical = Z.historical[!is.na(Z.historical)]
-Z.preindustrial = Z.preindustrial[!is.na(Z.preindustrial)]
+#model = 1
+#Z.historical = c(get_hist_pr_mod[,,model])
+#Z.preindustrial = c(get_pi_pr_mod[,,model])
+#Z.historical = Z.historical[!is.na(Z.historical)]
+#Z.preindustrial = Z.preindustrial[!is.na(Z.preindustrial)]
+Z.historical = c(hgt.giss.hist,hgt.hadgem.hist,hgt.noresm.hist)
+
 
 
 # Run Bootstrap #
