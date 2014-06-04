@@ -1,4 +1,7 @@
-dir = "/Users/matzhaugen/GoogleDrive/Research/DSwainCollaboration/SharedBAMS/UncertaintyCode"
+#dir = "/Users/matzhaugen/GoogleDrive/Research/DSwainCollaboration/SharedBAMS/UncertaintyCode"
+#setwd(dir)
+
+dir = "/Users/dlswain/Dropbox/BAMS_2013/UncertaintyCode"
 setwd(dir)
 
 library(ncdf4)
@@ -25,8 +28,9 @@ library(MASS)
 # 1. observational: total_baseline
 # 2. preindustrial: get_pi_pr_mod
 # 3. historical: get_hist_pr_mod
-load("z.pi")
-load("z.hist") 
+load("z.pi.new")
+load("z.hist.new") 
+load("z.obs.new")
 #preindustrial = get_pi_pr_mod
 #historical = get_hist_pr_mod
 #Z.observed = total_baseline
@@ -37,18 +41,23 @@ load("z.hist")
 #Z.historical = Z.historical[!is.na(Z.historical)]
 #Z.preindustrial = Z.preindustrial[!is.na(Z.preindustrial)]
 Z.historical = c(hgt.giss.hist,hgt.hadgem.hist,hgt.noresm.hist)
+Z.preindustrial = c(hgt.giss.pi,hgt.hadgem.pi,hgt.noresm.pi)
+
+Z.observed = hgt.annual.full[1:34]
+
+total_2013 = max(hgt.annual.full)
 
 
 
 # Run Bootstrap #
 set.seed(3)
 B = 50
-nmodels = 3
+nmodels = 1
 ratios = matrix(0, B, nmodels)
 for (i in 1:nmodels) {
 	model = i
-	Z.historical = c(get_hist_pr_mod[,,model])
-	Z.preindustrial = c(get_pi_pr_mod[,,model])
+	#Z.historical = c(get_hist_pr_mod[,,model])
+	#Z.preindustrial = c(get_pi_pr_mod[,,model])
 	Z.historical = Z.historical[!is.na(Z.historical)]
 	Z.preindustrial = Z.preindustrial[!is.na(Z.preindustrial)]
 	
